@@ -1,17 +1,57 @@
-[00:00:01.225] Server  LOG     ⚠ Console Ninja Turbopack support is a PRO feature, currently available to community users while in preview
-[00:00:01.297] Server  LOG     
-[00:00:01.298] Server  LOG        We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
-[00:00:01.298] Server  LOG        The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+[00:00:01.002] Server  LOG     ⚠ Console Ninja Turbopack support is a PRO feature, currently available to community users while in preview
+[00:00:01.172] Server  LOG      ✓ Ready in 492ms
+[00:00:05.368] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
 
-[00:00:01.298] Server  LOG        	- include was updated to add '.next/dev/types/**/*.ts'
-[00:00:01.298] Server  LOG     
-[00:00:01.298] Server  LOG        The following mandatory changes were made to your tsconfig.json:
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
 
-[00:00:01.298] Server  LOG        	- jsx was set to react-jsx (next.js uses the React automatic runtime)
-[00:00:01.299] Server  LOG     
-[00:00:01.427] Server  LOG      ✓ Ready in 636ms
-[00:00:08.398] Server  LOG      ○ Compiling / ...
-[00:00:09.468] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="es" className="dark">
+                          <body
+                            className="font-sans antialiased bg-background text-foreground"
+-                           data-atm-ext-installed="1.29.12"
+                          >
+                            ...
+                              <header className="border-b b...">
+                                <div className="px-8 py-6 ...">
+                                  <div>
+                                  <div className="text-right">
+                                    <div>
+                                    <div className="text-xl font-semibold">
++                                     09:56:14
+-                                     09:56:13
+                            ...
+                  ...
+
+[00:00:05.368] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:05.368] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:05.368] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:05.368] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976174689}
+[00:00:05.368] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976174690}
+[00:00:33.072] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -52,55 +92,3631 @@ https://react.dev/link/hydration-mismatch
                                   <div className="bg-card bo...">
                                     <div>
                                     <div className="text-3xl font-bold mt-2 text-destructive">
-+                                     11
--                                     4
++                                     9
+-                                     11
                                     ...
                                   ...
                                 ...
                             ...
                   ...
 
-[00:00:09.570] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:09.570] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:09.570] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:09.570] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910510806}
-[00:00:09.570] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910510807}
-[00:00:27.000] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910527345
-[00:00:34.105] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910527345
-[00:00:39.579] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910527345
-[00:00:39.579] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910527345
-[00:00:41.520] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910542718
-[00:00:41.520] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910542718
-[00:00:49.523] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910550718
-[00:00:49.523] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910542718
-[00:00:49.523] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910542718
-[00:00:57.513] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910550718
-[00:00:57.513] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910542718
-[00:01:05.523] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910566722
-[00:01:05.523] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910566722
-[00:01:09.591] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910566722
-[00:01:09.591] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910566722
-[00:01:09.591] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910566722
-[00:01:09.591] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910566722
-[00:01:13.528] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:13.528] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:13.528] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:21.632] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:21.632] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:21.632] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:31.360] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:31.360] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:31.360] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:38.999] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:38.999] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:41.001] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:41.001] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910574721
-[00:01:46.994] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910607342
-[00:01:54.996] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910607342
-[00:02:02.997] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910607342
-[00:02:10.995] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910607342
-[00:04:06.005] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910746359
-[00:05:05.991] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910746359
-[00:06:05.999] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910746359
-[00:07:06.006] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910746359
-[00:08:05.993] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765910986362
+[00:00:33.072] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:33.072] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:33.072] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:33.072] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976202828}
+[00:00:33.072] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976202828}
+[00:00:50.371] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976219236
+[00:00:58.359] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976219236
+[00:01:03.724] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976219236
+[00:01:06.371] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976235229
+[00:01:14.370] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976235229
+[00:01:21.126] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976235229
+[00:01:22.593] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/layout" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="es" className="dark">
+                          <body
+                            className="font-sans antialiased bg-background text-foreground"
+-                           data-atm-ext-installed="1.29.12"
+                          >
+                  ...
+
+[00:01:22.593] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:22.593] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/layout","route":"/layout"}
+[00:01:22.593] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/layout color: rgb(120, 120, 120) color: inherit {"dp":"/layout","o":"http://localhost:3000/layout","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976252340}
+[00:01:24.390] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="es" className="dark">
+                          <body
+                            className="font-sans antialiased bg-background text-foreground"
+-                           data-atm-ext-installed="1.29.12"
+                          >
+                            ...
+                              <header className="border-b b...">
+                                <div className="px-8 py-6 ...">
+                                  <div>
+                                  <div className="text-right">
+                                    <div>
+                                    <div className="text-xl font-semibold">
++                                     09:57:34
+-                                     09:57:33
+                            ...
+                  ...
+
+[00:01:24.390] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:24.390] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:24.390] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:24.390] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976254147}
+[00:01:24.390] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976254147}
+[00:01:49.374] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976278233
+[00:01:55.362] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976278233
+[00:01:57.375] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976278233
+[00:02:13.369] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:02:21.356] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:02:25.361] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:02:29.369] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:02:55.393] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:02:58.435] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:03:08.525] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/simulation" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="es" className="dark">
+                          <body
+                            className="font-sans antialiased bg-background text-foreground"
+-                           data-atm-ext-installed="1.29.12"
+                          >
+                  ...
+
+[00:03:08.525] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:08.525] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/simulation","route":"/simulation"}
+[00:03:08.525] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976358281}
+[00:03:08.809] Browser ERROR   Error loading stats: {}
+[00:03:18.530] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976368226}
+[00:03:19.606] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976369190}
+[00:03:19.606] Browser ERROR   Error loading stats: {}
+[00:03:19.606] Browser ERROR   Error loading stats: {}
+[00:03:25.379] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:03:44.634] Browser ERROR   Error loading stats: {}
+[00:03:52.626] Browser ERROR   Error loading stats: {}
+[00:03:55.379] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976302227
+[00:03:55.742] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976405445}
+[00:03:58.361] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976407227
+[00:04:27.229] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976407227
+[00:04:29.362] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976438218
+[00:04:41.361] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976438218
+[00:04:48.998] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:04:48.998] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:04:54.798] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:04:54.798] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:04:59.796] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:04:59.796] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:04:59.798] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976407227
+[00:05:30.491] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:05:30.491] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:05:57.366] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:05:57.366] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:05:58.370] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:05:58.370] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:06:27.370] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:06:27.370] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:06:57.534] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:06:57.534] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1765976454228
+[00:07:50.565] Server  LOG      ✓ Compiled in 200ms
+[00:11:31.706] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="es" className="dark">
+                          <body
+                            className="font-sans antialiased bg-background text-foreground"
+-                           data-atm-ext-installed="1.29.12"
+                          >
+                  ...
+
+[00:11:31.706] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:31.706] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:31.706] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976861411}
+[00:11:33.745] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976863490}
+[00:11:34.005] Browser ERROR   Error loading stats: {}
+[00:11:34.005] Browser ERROR   Error loading stats: {}
+[00:11:46.367] Browser ERROR   Error loading stats: {}
+[00:11:52.381] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976882122}
+[00:12:04.672] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976894412}
+[00:12:04.811] Browser ERROR   Error loading stats: {}
+[00:12:04.915] Browser ERROR   Error loading stats: {}
+[00:12:06.911] Browser ERROR   Error loading stats: {}
+[00:12:08.356] Browser ERROR   Error loading stats: {}
+[00:12:09.988] Browser ERROR   Error loading stats: {}
+[00:12:11.203] Browser ERROR   Error loading stats: {}
+[00:12:11.659] Browser ERROR   Error loading stats: {}
+[00:12:12.043] Browser ERROR   Error loading stats: {}
+[00:12:12.916] Browser ERROR   Error loading stats: {}
+[00:12:15.887] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976905633}
+[00:12:27.708] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976917447}
+[00:12:27.935] Browser ERROR   Error loading stats: {}
+[00:12:28.073] Browser ERROR   Error loading stats: {}
+[00:12:37.359] Browser ERROR   Error loading stats: {}
+[00:12:45.367] Browser ERROR   Error loading stats: {}
+[00:12:53.362] Browser ERROR   Error loading stats: {}
+[00:13:01.363] Browser ERROR   Error loading stats: {}
+[00:13:09.121] Browser ERROR   Error loading stats: {}
+[00:13:13.690] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765976963441}
+[00:13:33.144] Server  LOG      ✓ Compiled in 92ms
+[00:14:42.493] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977052195}
+[00:14:45.930] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977055686}
+[00:14:47.424] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977057166}
+[00:14:52.905] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977062629}
+[00:14:57.021] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/simulation color: rgb(120, 120, 120) color: inherit {"dp":"/simulation","o":"http://localhost:3000/simulation","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977066762}
+[00:15:00.570] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977070209}
+[00:16:38.025] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="es" className="dark">
+                          <body
+                            className="font-sans antialiased bg-background text-foreground"
+-                           data-atm-ext-installed="1.29.12"
+                          >
+                  ...
+
+[00:16:38.025] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:16:38.025] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:16:38.025] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977167779}
+[00:17:02.589] Server  ERROR    ⨯ ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:05.628] Server  LOG      ○ Compiling /_error ...
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:13.735] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:14.325] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:17.155] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:17.293] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:17.819] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:17.935] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:18.065] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:18.522] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:19.511] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:21.377] Server  ERROR    ⨯ ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+
+
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.404] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.405] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:134:18
+Parsing ecmascript source code failed
+  132 |
+  133 |   return { patient, studies, event }
+> 134 |   studies: Study[]
+      |                  ^
+  135 |   events: Event[]
+  136 | } {
+  137 |   const patients: Patient[] = []
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   Error loading patients: {}
+[00:17:22.414] Browser ERROR   Error loading events: {}
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:22.414] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:17:25.365] Browser ERROR   ./lib/simulation.ts:214:14
+Parsing ecmascript source code failed
+  212 |   return null // Ya está completado
+  213 |     type: "discharge",
+> 214 |     patientId: patient.id,
+      |              ^
+  215 |     message: `${patient.name} ha sido dado de alta`,
+  216 |     timestamp: new Date().toISOString(),
+  217 |   }
+
+Expected ';', '}' or <eof>
+
+Import trace:
+  App Route:
+    ./lib/simulation.ts
+    ./app/api/patients/route.ts
+[00:18:41.620] Server  LOG      ✓ Compiled in 191ms
+[00:19:33.757] Server  LOG      ✓ Compiled in 199ms
+[00:19:34.359] Browser ERROR   uncaughtError: ReferenceError: loading is not defined
+[00:19:59.776] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:20:00.095] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:20:00.096] Server  LOG      ✓ Compiled in 343ms
+[00:20:01.362] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="es" className="dark">
+                          <body
+                            className="font-sans antialiased bg-background text-foreground"
+-                           data-atm-ext-installed="1.29.12"
+                          >
+                  ...
+
+[00:20:01.362] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:20:01.362] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:20:01.362] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765977370635}

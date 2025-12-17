@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import { useState, useMemo, useEffect, useCallback } from "react"
+import Link from "next/link"
 import {
   XAxis,
   YAxis,
@@ -14,83 +15,133 @@ import {
   LineChart,
   Line,
 } from "recharts"
-import { AlertCircle, Stethoscope, TrendingUp, UserPlus, UserX, ChevronDown } from "lucide-react"
+import { AlertCircle, Stethoscope, TrendingUp, UserPlus, UserX, ChevronDown, Settings, Activity, Clock } from "lucide-react"
+import { PatientTimeline } from "@/components/patient-timeline"
+
+interface Study {
+  id: string
+  patientId: string
+  name: string
+  type: string
+  status: "Solicitado" | "Pendiente Resultado" | "Completado"
+  requestedAt: string
+  completedAt?: string
+  waitTime: number
+  hasAlert: boolean
+}
+
+interface Doctor {
+  id: string
+  name: string
+  specialty: string
+  available: boolean
+}
+
+interface Patient {
+  id: string
+  name: string
+  age: number
+  gender: "M" | "F"
+  insurance: string
+  diagnosis: string
+  severity: "Crítico" | "Urgente" | "Estable"
+  room: string
+  doctorId: string
+  phone: string
+  admissionTime: string
+  status: "active" | "discharged"
+  studies: Study[]
+  doctor?: Doctor
+}
+
+interface Event {
+  id: string
+  type: "admission" | "discharge" | "study_requested" | "study_completed" | "alert"
+  patientId: string
+  studyId?: string
+  message: string
+  timestamp: string
+}
 
 export default function ERDashboard() {
-  const [patients, setPatients] = useState(generateInitialPatients())
-  const [selectedPatient, setSelectedPatient] = useState(null)
+  const [patients, setPatients] = useState<Patient[]>([])
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null)
+  const [timelinePatient, setTimelinePatient] = useState<Patient | null>(null)
   const [filter, setFilter] = useState("all")
   const [sortBy, setSortBy] = useState("severity")
-  const [liveEvents, setLiveEvents] = useState([])
+  const [liveEvents, setLiveEvents] = useState<Event[]>([])
+  const [loading, setLoading] = useState(true)
 
-  // Simulación de entrada/salida de pacientes
+  // Cargar pacientes desde la API
+  const loadPatients = useCallback(async () => {
+    try {
+      const res = await fetch("/api/patients")
+      const data = await res.json()
+      setPatients(data.patients || [])
+    } catch (error) {
+      console.error("Error loading patients:", error)
+    }
+  }, [])
+
+  // Cargar eventos desde la API
+  const loadEvents = useCallback(async () => {
+    try {
+      const res = await fetch("/api/events")
+      const data = await res.json()
+      setLiveEvents((data.events || []).slice(0, 5))
+    } catch (error) {
+      console.error("Error loading events:", error)
+    }
+  }, [])
+
+  // Cargar datos iniciales
+  useEffect(() => {
+    const init = async () => {
+      await Promise.all([loadPatients(), loadEvents()])
+      setLoading(false)
+    }
+    init()
+  }, [loadPatients, loadEvents])
+
+  // Polling para actualizar datos en tiempo real
   useEffect(() => {
     const interval = setInterval(() => {
-      setPatients((prev) => {
-        const newPatients = [...prev]
-
-        // 30% de probabilidad de que salga un paciente completado
-        const completedIdx = newPatients.findIndex(
-          (p) => p.studies.length > 0 && p.studies.every((s) => s.status === "Completado") && Math.random() > 0.7,
-        )
-
-        if (completedIdx !== -1) {
-          const removedPatient = newPatients[completedIdx]
-          newPatients.splice(completedIdx, 1)
-          addLiveEvent(`${removedPatient.name} ha sido dado de alta`, "discharge")
-        }
-
-        // 40% de probabilidad de que ingrese un nuevo paciente
-        if (Math.random() > 0.6) {
-          const newPatient = generateRandomPatient()
-          newPatients.unshift(newPatient)
-          addLiveEvent(`${newPatient.name} ha ingresado a emergencias`, "admission")
-        }
-
-        return newPatients
-      })
-    }, 8000) // Cada 8 segundos
+      loadPatients()
+      loadEvents()
+    }, 3000) // Actualizar cada 3 segundos
 
     return () => clearInterval(interval)
-  }, [])
+  }, [loadPatients, loadEvents])
 
-  // Actualizar tiempos de espera
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPatients((prev) =>
-        prev.map((p) => ({
-          ...p,
-          studies: p.studies.map((s) => ({
-            ...s,
-            waitTime: Math.min(s.waitTime + 1, 180),
-          })),
-        })),
-      )
-    }, 30000) // Cada 30 segundos
-  }, [])
+  // Cambiar estado de estudio via API
+  const handleStudyStatusChange = async (patientId: string, studyId: string) => {
+    try {
+      // Obtener el estudio actual
+      const patient = patients.find((p) => p.id === patientId)
+      const study = patient?.studies.find((s) => s.id === studyId)
+      
+      if (!study) return
 
-  const addLiveEvent = (message, type) => {
-    const event = {
-      id: Date.now(),
-      message,
-      type,
-      timestamp: new Date().toLocaleTimeString("es-AR"),
+      // Determinar el siguiente estado
+      const statusFlow = ["Solicitado", "Pendiente Resultado", "Completado"]
+      const currentIndex = statusFlow.indexOf(study.status)
+      const nextStatus = statusFlow[(currentIndex + 1) % statusFlow.length]
+
+      // Actualizar via API
+      await fetch(`/api/studies/${studyId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          status: nextStatus,
+          completedAt: nextStatus === "Completado" ? new Date().toISOString() : undefined,
+        }),
+      })
+
+      // Recargar pacientes
+      await loadPatients()
+    } catch (error) {
+      console.error("Error updating study:", error)
     }
-    setLiveEvents((prev) => [event, ...prev.slice(0, 4)])
-  }
-
-  const handleStudyStatusChange = (patientId, studyIndex) => {
-    setPatients((prev) =>
-      prev.map((p) => {
-        if (p.id === patientId) {
-          const newStudies = [...p.studies]
-          const currentStatuses = ["Solicitado", "Pendiente Resultado", "Completado"]
-          const currentIndex = currentStatuses.indexOf(newStudies[studyIndex].status)
-          newStudies[studyIndex].status = currentStatuses[(currentIndex + 1) % currentStatuses.length]
-        }
-        return p
-      }),
-    )
   }
 
   // Filtrado y ordenamiento
@@ -159,7 +210,16 @@ export default function ERDashboard() {
     { time: "13:00", pacientes: stats.total, completados: stats.completed },
   ]
 
-  const alertPatients = patients.filter((p) => p.studies.some((s) => s.hasAlert))
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <Activity className="w-12 h-12 animate-spin text-primary mx-auto mb-4" />
+          <p className="text-muted-foreground">Cargando dashboard...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -173,11 +233,20 @@ export default function ERDashboard() {
               </div>
               Command Center - Emergencias
             </h1>
-            <p className="text-muted-foreground text-sm mt-1">Trazabilidad en tiempo real • Simulación en vivo</p>
+            <p className="text-muted-foreground text-sm mt-1">Trazabilidad en tiempo real • Datos en vivo</p>
           </div>
-          <div className="text-right">
-            <div className="text-xs text-muted-foreground">Última actualización</div>
-            <div className="text-xl font-semibold">{new Date().toLocaleTimeString("es-AR")}</div>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/simulation"
+              className="px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition flex items-center gap-2 text-sm font-medium"
+            >
+              <Settings className="w-4 h-4" />
+              Control de Simulación
+            </Link>
+            <div className="text-right">
+              <div className="text-xs text-muted-foreground">Última actualización</div>
+              <div className="text-xl font-semibold">{new Date().toLocaleTimeString("es-AR")}</div>
+            </div>
           </div>
         </div>
       </header>
@@ -230,12 +299,18 @@ export default function ERDashboard() {
                 <div key={event.id} className="flex items-start gap-3 text-sm p-2 bg-secondary/30 rounded-lg">
                   {event.type === "admission" ? (
                     <UserPlus className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  ) : (
+                  ) : event.type === "discharge" ? (
                     <UserX className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" />
+                  ) : event.type === "alert" ? (
+                    <AlertCircle className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
+                  ) : (
+                    <Activity className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                   )}
                   <div className="flex-1">
                     <p>{event.message}</p>
-                    <p className="text-xs text-muted-foreground">{event.timestamp}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {new Date(event.timestamp).toLocaleTimeString("es-AR")}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -331,7 +406,16 @@ export default function ERDashboard() {
           <div className="space-y-2 max-h-[calc(100vh-400px)] overflow-y-auto">
             {filteredAndSortedPatients.length === 0 ? (
               <div className="flex items-center justify-center py-12 text-muted-foreground">
-                <p>No hay pacientes que coincidan con los filtros seleccionados</p>
+                <div className="text-center">
+                  <Activity className="w-12 h-12 mx-auto mb-3 opacity-50" />
+                  <p>No hay pacientes que coincidan con los filtros seleccionados</p>
+                  <Link
+                    href="/simulation"
+                    className="inline-block mt-4 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition text-sm"
+                  >
+                    Ir a Control de Simulación
+                  </Link>
+                </div>
               </div>
             ) : (
               filteredAndSortedPatients.map((patient) => {
@@ -419,11 +503,16 @@ export default function ERDashboard() {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
                           <div>
                             <p className="text-muted-foreground font-medium">Médico Tratante</p>
-                            <p className="mt-1 font-medium text-sm">{patient.doctor}</p>
+                            <p className="mt-1 font-medium text-sm">{patient.doctor?.name || "N/A"}</p>
                           </div>
                           <div>
                             <p className="text-muted-foreground font-medium">Hora Ingreso</p>
-                            <p className="mt-1 font-medium text-sm">{patient.admissionTime}</p>
+                            <p className="mt-1 font-medium text-sm">
+                              {new Date(patient.admissionTime).toLocaleTimeString("es-AR", {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              })}
+                            </p>
                           </div>
                           <div>
                             <p className="text-muted-foreground font-medium">Cobertura</p>
@@ -435,15 +524,29 @@ export default function ERDashboard() {
                           </div>
                         </div>
 
+                        {/* Botón Ver Trazabilidad */}
+                        <div className="flex justify-end">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setTimelinePatient(patient)
+                            }}
+                            className="px-4 py-2 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 transition flex items-center gap-2 text-sm font-medium"
+                          >
+                            <Clock className="w-4 h-4" />
+                            Ver Trazabilidad Completa
+                          </button>
+                        </div>
+
                         {/* Studies Details */}
                         <div>
                           <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">
                             Detalle de Estudios
                           </p>
                           <div className="space-y-2">
-                            {patient.studies.map((study, idx) => (
+                            {patient.studies.map((study) => (
                               <div
-                                key={idx}
+                                key={study.id}
                                 className={`bg-background rounded-lg p-3 border text-xs transition ${
                                   study.hasAlert
                                     ? "border-destructive/30 bg-destructive/5"
@@ -451,7 +554,7 @@ export default function ERDashboard() {
                                 }`}
                               >
                                 <div className="flex items-center justify-between gap-2 mb-2">
-                                  <span className="font-medium text-foreground">{study.type}</span>
+                                  <span className="font-medium text-foreground">{study.name}</span>
                                   <span className="text-muted-foreground">{study.waitTime}m</span>
                                 </div>
                                 <div className="flex items-center gap-2 mb-2">
@@ -479,7 +582,7 @@ export default function ERDashboard() {
                                 <button
                                   onClick={(e) => {
                                     e.stopPropagation()
-                                    handleStudyStatusChange(patient.id, idx)
+                                    handleStudyStatusChange(patient.id, study.id)
                                   }}
                                   className="w-full px-2 py-1.5 rounded text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 transition"
                                 >
@@ -503,283 +606,52 @@ export default function ERDashboard() {
           </div>
         </div>
       </main>
+
+      {/* Modal de Trazabilidad */}
+      {timelinePatient && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setTimelinePatient(null)}
+        >
+          <div
+            className="bg-background border border-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header del Modal */}
+            <div className="sticky top-0 bg-background border-b border-border px-6 py-4 flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-bold">{timelinePatient.name}</h2>
+                <p className="text-sm text-muted-foreground">
+                  {timelinePatient.diagnosis} • {timelinePatient.severity}
+                </p>
+              </div>
+              <button
+                onClick={() => setTimelinePatient(null)}
+                className="p-2 rounded-lg hover:bg-secondary transition"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Contenido del Modal */}
+            <div className="p-6">
+              <PatientTimeline patient={timelinePatient} studies={timelinePatient.studies} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
-}
-
-// Función para generar pacientes iniciales (mucho mayor volumen)
-function generateInitialPatients() {
-  const diagnoses = [
-    "Infarto Agudo de Miocardio",
-    "Apendicitis Aguda",
-    "Accidente Cerebrovascular",
-    "Fractura de Fémur",
-    "Tromboembolismo Pulmonar",
-    "Neumonía Bilateral",
-    "Pancreatitis Aguda",
-    "Hemorragia Digestiva",
-    "Sepsis",
-    "Traumatismo Craneoencefálico",
-    "Pielonefritis Complicada",
-    "Dolor Torácico Atípico",
-    "Cetoacidosis Diabética",
-    "Insuficiencia Cardíaca Descompensada",
-    "Embolia Mesentérica",
-  ]
-
-  const studies = [
-    { name: "ECG", type: "Cardiología" },
-    { name: "Rx de Tórax", type: "Radiografía" },
-    { name: "TC Torax", type: "Tomografía" },
-    { name: "Ecografía Abdominal", type: "Ecografía" },
-    { name: "Análisis Sangre", type: "Análisis Sangre" },
-    { name: "Troponina T", type: "Análisis Sangre" },
-    { name: "TC Cerebral", type: "Tomografía" },
-    { name: "RM Cerebral", type: "Resonancia" },
-    { name: "Rx Pelvis", type: "Radiografía" },
-    { name: "D-Dímero", type: "Análisis Sangre" },
-    { name: "Angiografía TC", type: "Tomografía" },
-    { name: "Análisis Orina", type: "Análisis Orina" },
-    { name: "Cultivo Esputo", type: "Microbiología" },
-    { name: "Lipasa", type: "Análisis Sangre" },
-    { name: "Ecografía Cardíaca", type: "Ecografía" },
-  ]
-
-  const doctors = [
-    "Dr. Carlos Ruiz",
-    "Dra. Patricia González",
-    "Dr. Fernando López",
-    "Dr. Miguel Ángel Sosa",
-    "Dra. Elena Moreno",
-    "Dr. Roberto Fuentes",
-    "Dra. Ana García",
-    "Dr. José María López",
-    "Dra. Lucía Martínez",
-    "Dr. Alfonso Rodríguez",
-  ]
-
-  const insurances = ["Prepagas - Medifé", "OSDE", "Swiss Medical", "Galeno", "Presente", "PAMI", "Particular"]
-
-  const firstNames = [
-    "Roberto",
-    "María",
-    "Juan",
-    "Ana",
-    "Carlos",
-    "Marta",
-    "Pedro",
-    "Laura",
-    "Miguel",
-    "Isabel",
-    "Francisco",
-    "Rosa",
-    "Diego",
-    "Carmen",
-    "Antonio",
-    "Francisca",
-    "Javier",
-    "Esperanza",
-    "Manuel",
-    "Dolores",
-  ]
-
-  const lastNames = [
-    "García",
-    "López",
-    "Rodríguez",
-    "Martínez",
-    "Fernández",
-    "Díaz",
-    "Pérez",
-    "Sánchez",
-    "Moreno",
-    "Jiménez",
-    "Ruiz",
-    "Hernández",
-    "Torres",
-    "Gómez",
-    "Romero",
-  ]
-
-  const patients = []
-  let patientId = 1
-
-  for (let i = 0; i < 28; i++) {
-    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)]
-    const lastName1 = lastNames[Math.floor(Math.random() * lastNames.length)]
-    const lastName2 = lastNames[Math.floor(Math.random() * lastNames.length)]
-
-    const numStudies = Math.random() > 0.4 ? (Math.random() > 0.5 ? 2 : 3) : 1
-    const patientStudies = []
-
-    for (let j = 0; j < numStudies; j++) {
-      const study = studies[Math.floor(Math.random() * studies.length)]
-      const statuses = ["Solicitado", "Pendiente Resultado", "Completado"]
-      const status = statuses[Math.floor(Math.random() * statuses.length)]
-      const hasAlert = Math.random() > 0.85
-
-      patientStudies.push({
-        name: study.name,
-        type: study.type,
-        status,
-        waitTime: Math.floor(Math.random() * 120) + 5,
-        hasAlert,
-      })
-    }
-
-    const severity = Math.random() > 0.7 ? "Crítico" : Math.random() > 0.4 ? "Urgente" : "Estable"
-
-    patients.push({
-      id: `P${String(patientId).padStart(3, "0")}`,
-      name: `${firstName} ${lastName1} ${lastName2}`,
-      age: Math.floor(Math.random() * 70) + 18,
-      gender: Math.random() > 0.5 ? "M" : "F",
-      insurance: insurances[Math.floor(Math.random() * insurances.length)],
-      diagnosis: diagnoses[Math.floor(Math.random() * diagnoses.length)],
-      admissionTime: `${String(Math.floor(Math.random() * 6) + 8).padStart(2, "0")}:${String(Math.floor(Math.random() * 60)).padStart(2, "0")}`,
-      severity,
-      doctor: doctors[Math.floor(Math.random() * doctors.length)],
-      room: `${["Res.", "Obs.", "Trau.", "Neum.", "UCI"][Math.floor(Math.random() * 5)]} ${Math.floor(Math.random() * 5) + 1}-${String.fromCharCode(65 + Math.floor(Math.random() * 3))}`,
-      studies: patientStudies,
-      phone: `123-456-${String(Math.floor(Math.random() * 1000)).padStart(3, "0")}`,
-    })
-
-    patientId++
-  }
-
-  return patients
-}
-
-// Función para generar un paciente aleatorio
-function generateRandomPatient() {
-  const diagnoses = [
-    "Infarto Agudo de Miocardio",
-    "Apendicitis Aguda",
-    "Accidente Cerebrovascular",
-    "Fractura de Fémur",
-    "Tromboembolismo Pulmonar",
-    "Neumonía Bilateral",
-    "Pancreatitis Aguda",
-    "Hemorragia Digestiva",
-    "Sepsis",
-    "Traumatismo Craneoencefálico",
-    "Pielonefritis Complicada",
-    "Dolor Torácico Atípico",
-    "Cetoacidosis Diabética",
-    "Insuficiencia Cardíaca Descompensada",
-    "Embolia Mesentérica",
-  ]
-
-  const studies = [
-    { name: "ECG", type: "Cardiología" },
-    { name: "Rx de Tórax", type: "Radiografía" },
-    { name: "TC Torax", type: "Tomografía" },
-    { name: "Ecografía Abdominal", type: "Ecografía" },
-    { name: "Análisis Sangre", type: "Análisis Sangre" },
-    { name: "Troponina T", type: "Análisis Sangre" },
-    { name: "TC Cerebral", type: "Tomografía" },
-    { name: "RM Cerebral", type: "Resonancia" },
-    { name: "Rx Pelvis", type: "Radiografía" },
-    { name: "D-Dímero", type: "Análisis Sangre" },
-    { name: "Angiografía TC", type: "Tomografía" },
-    { name: "Análisis Orina", type: "Análisis Orina" },
-    { name: "Cultivo Esputo", type: "Microbiología" },
-    { name: "Lipasa", type: "Análisis Sangre" },
-    { name: "Ecografía Cardíaca", type: "Ecografía" },
-  ]
-
-  const doctors = [
-    "Dr. Carlos Ruiz",
-    "Dra. Patricia González",
-    "Dr. Fernando López",
-    "Dr. Miguel Ángel Sosa",
-    "Dra. Elena Moreno",
-    "Dr. Roberto Fuentes",
-    "Dra. Ana García",
-    "Dr. José María López",
-    "Dra. Lucía Martínez",
-    "Dr. Alfonso Rodríguez",
-  ]
-
-  const insurances = ["Prepagas - Medifé", "OSDE", "Swiss Medical", "Galeno", "Presente", "PAMI", "Particular"]
-
-  const firstNames = [
-    "Roberto",
-    "María",
-    "Juan",
-    "Ana",
-    "Carlos",
-    "Marta",
-    "Pedro",
-    "Laura",
-    "Miguel",
-    "Isabel",
-    "Francisco",
-    "Rosa",
-    "Diego",
-    "Carmen",
-    "Antonio",
-    "Francisca",
-    "Javier",
-    "Esperanza",
-    "Manuel",
-    "Dolores",
-  ]
-
-  const lastNames = [
-    "García",
-    "López",
-    "Rodríguez",
-    "Martínez",
-    "Fernández",
-    "Díaz",
-    "Pérez",
-    "Sánchez",
-    "Moreno",
-    "Jiménez",
-    "Ruiz",
-    "Hernández",
-    "Torres",
-    "Gómez",
-    "Romero",
-  ]
-
-  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)]
-  const lastName1 = lastNames[Math.floor(Math.random() * lastNames.length)]
-  const lastName2 = lastNames[Math.floor(Math.random() * lastNames.length)]
-
-  const nextPatientId = Math.floor(Math.random() * 900) + 100
-
-  const numStudies = Math.random() > 0.4 ? (Math.random() > 0.5 ? 2 : 3) : 1
-  const patientStudies = []
-
-  for (let j = 0; j < numStudies; j++) {
-    const study = studies[Math.floor(Math.random() * studies.length)]
-    const hasAlert = Math.random() > 0.9
-
-    patientStudies.push({
-      name: study.name,
-      type: study.type,
-      status: "Solicitado",
-      waitTime: 5,
-      hasAlert,
-    })
-  }
-
-  const severity = Math.random() > 0.7 ? "Crítico" : Math.random() > 0.4 ? "Urgente" : "Estable"
-
-  return {
-    id: `P${String(nextPatientId).padStart(3, "0")}`,
-    name: `${firstName} ${lastName1} ${lastName2}`,
-    age: Math.floor(Math.random() * 70) + 18,
-    gender: Math.random() > 0.5 ? "M" : "F",
-    insurance: insurances[Math.floor(Math.random() * insurances.length)],
-    diagnosis: diagnoses[Math.floor(Math.random() * diagnoses.length)],
-    admissionTime: new Date().toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" }),
-    severity,
-    doctor: doctors[Math.floor(Math.random() * doctors.length)],
-    room: `${["Res.", "Obs.", "Trau.", "Neum.", "UCI"][Math.floor(Math.random() * 5)]} ${Math.floor(Math.random() * 5) + 1}-${String.fromCharCode(65 + Math.floor(Math.random() * 3))}`,
-    studies: patientStudies,
-    phone: `123-456-${String(Math.floor(Math.random() * 1000)).padStart(3, "0")}`,
-  }
 }

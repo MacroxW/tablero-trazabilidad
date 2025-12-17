@@ -1,0 +1,65 @@
+{
+  "studies": [
+    {
+      "id": "Smja15e8skye5x",
+      "patientId": "Pmja15e8s0l9d8",
+      "name": "Angiografía TC",
+      "type": "Tomografía",
+      "status": "Solicitado",
+      "requestedAt": "2025-12-17T13:11:07.612Z",
+      "waitTime": 0,
+      "hasAlert": false
+    },
+    {
+      "id": "Smja15ef72f9bp",
+      "patientId": "Pmja15ef7ei4i3",
+      "name": "Lipasa",
+      "type": "Análisis Sangre",
+      "status": "Solicitado",
+      "requestedAt": "2025-12-17T13:11:07.843Z",
+      "waitTime": 0,
+      "hasAlert": false
+    },
+    {
+      "id": "Smja15ef7382pu",
+      "patientId": "Pmja15ef7ei4i3",
+      "name": "TC Cerebral",
+      "type": "Tomografía",
+      "status": "Solicitado",
+      "requestedAt": "2025-12-17T13:11:07.843Z",
+      "waitTime": 0,
+      "hasAlert": false
+    },
+    {
+      "id": "Smja15ef783te2",
+      "patientId": "Pmja15ef7ei4i3",
+      "name": "TC Torax",
+      "type": "Tomografía",
+      "status": "Solicitado",
+      "requestedAt": "2025-12-17T13:11:07.843Z",
+      "waitTime": 0,
+      "hasAlert": false
+    },
+    {
+      "id": "Smja15ekv4fnlf",
+      "patientId": "Pmja15ektfk1hr",
+      "name": "TC Cerebral",
+      "type": "Tomografía",
+      "status": "Solicitado",
+      "requestedAt": "2025-12-17T13:11:08.045Z",
+      "waitTime": 0,
+      "hasAlert": false
+    },
+    {
+      "id": "Smja15eplva2if",
+      "patientId": "Pmja15epltt8iz",
+      "name": "Análisis Orina",
+      "type": "Análisis Orina",
+      "status": "Solicitado",
+      "requestedAt": "2025-12-17T13:11:08.217Z",
+      "waitTime": 0,
+      "hasAlert": false,
+      "completedAt": "2025-12-17T13:11:26.234Z"
+    }
+  ]
+}

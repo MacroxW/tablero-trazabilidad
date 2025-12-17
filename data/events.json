@@ -1,0 +1,40 @@
+{
+  "events": [
+    {
+      "id": "Emja15e8srms4s",
+      "type": "admission",
+      "patientId": "Pmja15e8s0l9d8",
+      "message": "Pedro García Fernández ha ingresado a emergencias",
+      "timestamp": "2025-12-17T13:11:07.612Z"
+    },
+    {
+      "id": "Emja15ef72nbmq",
+      "type": "admission",
+      "patientId": "Pmja15ef7ei4i3",
+      "message": "Miguel Pérez Jiménez ha ingresado a emergencias",
+      "timestamp": "2025-12-17T13:11:07.843Z"
+    },
+    {
+      "id": "Emja15ekwsjk76",
+      "type": "admission",
+      "patientId": "Pmja15ektfk1hr",
+      "message": "Esperanza Romero Díaz ha ingresado a emergencias",
+      "timestamp": "2025-12-17T13:11:08.045Z"
+    },
+    {
+      "id": "Emja15epl3q6l7",
+      "type": "admission",
+      "patientId": "Pmja15epltt8iz",
+      "message": "María Díaz Díaz ha ingresado a emergencias",
+      "timestamp": "2025-12-17T13:11:08.217Z"
+    },
+    {
+      "id": "E1765977086267",
+      "type": "study_completed",
+      "patientId": "Pmja15epltt8iz",
+      "studyId": "Smja15eplva2if",
+      "message": "Estudio Análisis Orina completado - María Díaz Díaz",
+      "timestamp": "2025-12-17T13:11:26.267Z"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "patients": [
+    {
+      "id": "Pmja15e8s0l9d8",
+      "name": "Pedro García Fernández",
+      "age": 64,
+      "gender": "M",
+      "insurance": "Particular",
+      "diagnosis": "Pielonefritis Complicada",
+      "severity": "Urgente",
+      "room": "Neum. 1-B",
+      "doctorId": "D007",
+      "phone": "123-456-968",
+      "admissionTime": "2025-12-17T13:11:07.612Z",
+      "status": "active"
+    },
+    {
+      "id": "Pmja15ef7ei4i3",
+      "name": "Miguel Pérez Jiménez",
+      "age": 25,
+      "gender": "F",
+      "insurance": "OSDE",
+      "diagnosis": "Dolor Torácico Atípico",
+      "severity": "Estable",
+      "room": "Res. 5-B",
+      "doctorId": "D009",
+      "phone": "123-456-469",
+      "admissionTime": "2025-12-17T13:11:07.843Z",
+      "status": "active"
+    },
+    {
+      "id": "Pmja15ektfk1hr",
+      "name": "Esperanza Romero Díaz",
+      "age": 64,
+      "gender": "M",
+      "insurance": "Swiss Medical",
+      "diagnosis": "Accidente Cerebrovascular",
+      "severity": "Estable",
+      "room": "Obs. 3-A",
+      "doctorId": "D004",
+      "phone": "123-456-452",
+      "admissionTime": "2025-12-17T13:11:08.045Z",
+      "status": "active"
+    },
+    {
+      "id": "Pmja15epltt8iz",
+      "name": "María Díaz Díaz",
+      "age": 82,
+      "gender": "M",
+      "insurance": "OSDE",
+      "diagnosis": "Dolor Torácico Atípico",
+      "severity": "Crítico",
+      "room": "Res. 3-B",
+      "doctorId": "D003",
+      "phone": "123-456-322",
+      "admissionTime": "2025-12-17T13:11:08.217Z",
+      "status": "active"
+    }
+  ]
+}

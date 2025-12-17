@@ -1,0 +1,14 @@
+{
+  "doctors": [
+    { "id": "D001", "name": "Dr. Carlos Ruiz", "specialty": "Cardiología", "available": true },
+    { "id": "D002", "name": "Dra. Patricia González", "specialty": "Neurología", "available": true },
+    { "id": "D003", "name": "Dr. Fernando López", "specialty": "Traumatología", "available": true },
+    { "id": "D004", "name": "Dr. Miguel Ángel Sosa", "specialty": "Medicina Interna", "available": true },
+    { "id": "D005", "name": "Dra. Elena Moreno", "specialty": "Neumología", "available": true },
+    { "id": "D006", "name": "Dr. Roberto Fuentes", "specialty": "Gastroenterología", "available": true },
+    { "id": "D007", "name": "Dra. Ana García", "specialty": "Emergencias", "available": true },
+    { "id": "D008", "name": "Dr. José María López", "specialty": "Cirugía General", "available": true },
+    { "id": "D009", "name": "Dra. Lucía Martínez", "specialty": "Nefrología", "available": true },
+    { "id": "D010", "name": "Dr. Alfonso Rodríguez", "specialty": "UCI", "available": true }
+  ]
+}
