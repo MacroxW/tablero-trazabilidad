@@ -143,7 +143,112 @@ export function generateInitialData(count: number = 15): {
   const studies: Study[] = []
   const events: Event[] = []
 
-  for (let i = 0; i < count; i++) {
+  // Asegurar al menos un paciente por cada etapa del Kanban
+  const kanbanStages = [
+    "admission",           // En Admisión
+    "waiting_doctor",      // Esperando Atención Médica
+    "in_studies",          // En Estudios
+    "results_ready",       // Resultados Listos
+    "in_progress",         // Atención en Progreso
+    "discharge"            // Alta/Derivación
+  ]
+
+  // Crear al menos un paciente por etapa
+  kanbanStages.forEach((stage, index) => {
+    const { patient, studies: patientStudies, event } = generateRandomPatient()
+    
+    // Configurar el paciente según la etapa
+    switch (stage) {
+      case "admission":
+        // En Admisión: sin médico asignado
+        delete patient.assignedToDoctorAt
+        delete patient.firstStudyRequestedAt
+        // Sin estudios
+        patientStudies.length = 0
+        break
+        
+      case "waiting_doctor":
+        // Esperando Atención Médica: tiene médico pero sin estudios
+        patient.assignedToDoctorAt = new Date(Date.now() - randomInt(5, 15) * 60000).toISOString()
+        delete patient.firstStudyRequestedAt
+        // Sin estudios
+        patientStudies.length = 0
+        break
+        
+      case "in_studies":
+        // En Estudios: tiene estudios pendientes o en proceso
+        patient.assignedToDoctorAt = new Date(Date.now() - randomInt(20, 40) * 60000).toISOString()
+        patient.firstStudyRequestedAt = new Date(Date.now() - randomInt(10, 30) * 60000).toISOString()
+        patientStudies.forEach((study) => {
+          const rand = Math.random()
+          if (rand > 0.5) {
+            study.status = "Pendiente Resultado"
+            study.inProgressAt = new Date(Date.now() - randomInt(5, 20) * 60000).toISOString()
+            study.waitTime = randomInt(15, 40)
+          } else {
+            study.status = "Solicitado"
+            study.waitTime = randomInt(5, 20)
+          }
+        })
+        break
+        
+      case "results_ready":
+        // Resultados Listos: todos los estudios completados pero no revisados
+        patient.assignedToDoctorAt = new Date(Date.now() - randomInt(60, 90) * 60000).toISOString()
+        patient.firstStudyRequestedAt = new Date(Date.now() - randomInt(50, 80) * 60000).toISOString()
+        patientStudies.forEach((study) => {
+          study.status = "Completado"
+          study.inProgressAt = new Date(Date.now() - randomInt(30, 60) * 60000).toISOString()
+          study.completedAt = new Date(Date.now() - randomInt(5, 15) * 60000).toISOString()
+          study.waitTime = randomInt(40, 80)
+        })
+        // NO establecer allStudiesCompletedAt para que quede en "results_ready"
+        break
+        
+      case "in_progress":
+        // Atención en Progreso: estudios completados y revisados
+        patient.assignedToDoctorAt = new Date(Date.now() - randomInt(90, 120) * 60000).toISOString()
+        patient.firstStudyRequestedAt = new Date(Date.now() - randomInt(80, 110) * 60000).toISOString()
+        patientStudies.forEach((study) => {
+          study.status = "Completado"
+          study.inProgressAt = new Date(Date.now() - randomInt(60, 90) * 60000).toISOString()
+          study.completedAt = new Date(Date.now() - randomInt(20, 40) * 60000).toISOString()
+          study.waitTime = randomInt(60, 100)
+        })
+        // Establecer allStudiesCompletedAt para indicar que fueron revisados
+        const lastCompletedTime = Math.max(
+          ...patientStudies.map((s) => new Date(s.completedAt || 0).getTime())
+        )
+        patient.allStudiesCompletedAt = new Date(lastCompletedTime).toISOString()
+        break
+        
+      case "discharge":
+        // Alta/Derivación: paciente dado de alta
+        patient.status = "discharged"
+        patient.assignedToDoctorAt = new Date(Date.now() - randomInt(120, 180) * 60000).toISOString()
+        patient.firstStudyRequestedAt = new Date(Date.now() - randomInt(110, 170) * 60000).toISOString()
+        patient.dischargedAt = new Date().toISOString()
+        patientStudies.forEach((study) => {
+          study.status = "Completado"
+          study.inProgressAt = new Date(Date.now() - randomInt(90, 120) * 60000).toISOString()
+          study.completedAt = new Date(Date.now() - randomInt(30, 60) * 60000).toISOString()
+          study.waitTime = randomInt(80, 120)
+        })
+        const lastCompleted = Math.max(
+          ...patientStudies.map((s) => new Date(s.completedAt || 0).getTime())
+        )
+        patient.allStudiesCompletedAt = new Date(lastCompleted).toISOString()
+        break
+    }
+    
+    patients.push(patient)
+    studies.push(...patientStudies)
+    events.push(event)
+  })
+
+  // Generar el resto de pacientes con estados aleatorios
+  const remainingCount = count - kanbanStages.length
+  for (let i = 0; i < remainingCount; i++) {
     const { patient, studies: patientStudies, event } = generateRandomPatient()
     
     // Variar los estados de los estudios para datos iniciales

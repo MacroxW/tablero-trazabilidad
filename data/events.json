@@ -1,40 +1,144 @@
 {
   "events": [
     {
-      "id": "Emja15e8srms4s",
+      "id": "Emjcwav46gsm5g",
       "type": "admission",
-      "patientId": "Pmja15e8s0l9d8",
-      "message": "Pedro García Fernández ha ingresado a emergencias",
-      "timestamp": "2025-12-17T13:11:07.612Z"
+      "patientId": "Pmjcwav46tosck",
+      "message": "Esperanza Romero Jiménez ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.206Z"
     },
     {
-      "id": "Emja15ef72nbmq",
+      "id": "Emjcwav46lj3rx",
       "type": "admission",
-      "patientId": "Pmja15ef7ei4i3",
-      "message": "Miguel Pérez Jiménez ha ingresado a emergencias",
-      "timestamp": "2025-12-17T13:11:07.843Z"
+      "patientId": "Pmjcwav46dubd5",
+      "message": "Roberto López Ruiz ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.206Z"
     },
     {
-      "id": "Emja15ekwsjk76",
+      "id": "Emjcwav46y42la",
       "type": "admission",
-      "patientId": "Pmja15ektfk1hr",
-      "message": "Esperanza Romero Díaz ha ingresado a emergencias",
-      "timestamp": "2025-12-17T13:11:08.045Z"
+      "patientId": "Pmjcwav46vqjqs",
+      "message": "Laura Rodríguez Martínez ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.206Z"
     },
     {
-      "id": "Emja15epl3q6l7",
+      "id": "Emjcwav46jcawx",
       "type": "admission",
-      "patientId": "Pmja15epltt8iz",
-      "message": "María Díaz Díaz ha ingresado a emergencias",
-      "timestamp": "2025-12-17T13:11:08.217Z"
+      "patientId": "Pmjcwav46attfn",
+      "message": "Pedro García Ruiz ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.206Z"
     },
     {
-      "id": "E1765977086267",
-      "type": "study_completed",
-      "patientId": "Pmja15epltt8iz",
-      "studyId": "Smja15eplva2if",
-      "message": "Estudio Análisis Orina completado - María Díaz Díaz",
-      "timestamp": "2025-12-17T13:11:26.267Z"
+      "id": "Emjcwav47zp3t9",
+      "type": "admission",
+      "patientId": "Pmjcwav47amdug",
+      "message": "Manuel Torres Moreno ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47irjdx",
+      "type": "admission",
+      "patientId": "Pmjcwav47vxkxu",
+      "message": "Antonio Rodríguez Fernández ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47wl544",
+      "type": "admission",
+      "patientId": "Pmjcwav47a6fo5",
+      "message": "Francisca Díaz López ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47p5wl4",
+      "type": "admission",
+      "patientId": "Pmjcwav47a9esa",
+      "message": "Antonio Torres Sánchez ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47u9emt",
+      "type": "admission",
+      "patientId": "Pmjcwav47phq3i",
+      "message": "María Sánchez López ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47ousyz",
+      "type": "admission",
+      "patientId": "Pmjcwav47qaest",
+      "message": "Javier Hernández Ruiz ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47aljlw",
+      "type": "admission",
+      "patientId": "Pmjcwav47errda",
+      "message": "Manuel Moreno Ruiz ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47rk5gz",
+      "type": "admission",
+      "patientId": "Pmjcwav47ap15y",
+      "message": "Laura Romero Martínez ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47v8nsv",
+      "type": "admission",
+      "patientId": "Pmjcwav47nlg2x",
+      "message": "Manuel Díaz Fernández ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47avilf",
+      "type": "admission",
+      "patientId": "Pmjcwav47641i4",
+      "message": "Esperanza Pérez Romero ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47ups2b",
+      "type": "admission",
+      "patientId": "Pmjcwav47m5pk4",
+      "message": "Francisca Díaz Fernández ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47oxj52",
+      "type": "admission",
+      "patientId": "Pmjcwav474dluf",
+      "message": "Pedro Hernández Hernández ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav47jghw7",
+      "type": "admission",
+      "patientId": "Pmjcwav47i3pe4",
+      "message": "Juan Sánchez López ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.207Z"
+    },
+    {
+      "id": "Emjcwav488sbhk",
+      "type": "admission",
+      "patientId": "Pmjcwav48hfatg",
+      "message": "Antonio Gómez Pérez ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.208Z"
+    },
+    {
+      "id": "Emjcwav48ymykf",
+      "type": "admission",
+      "patientId": "Pmjcwav48m2sj3",
+      "message": "Laura Romero Jiménez ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.208Z"
+    },
+    {
+      "id": "Emjcwav48tglvt",
+      "type": "admission",
+      "patientId": "Pmjcwav482ja2j",
+      "message": "Ana Romero Jiménez ha ingresado a emergencias",
+      "timestamp": "2025-12-19T13:18:43.208Z"
     }
   ]
 }

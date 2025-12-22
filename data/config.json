@@ -1,6 +1,6 @@
 {
   "simulation": {
-    "running": true,
+    "running": false,
     "speed": 1,
     "autoAdmission": true,
     "autoDischarge": true,
@@ -8,5 +8,5 @@
     "admissionIntervalMs": 8000,
     "studyProgressIntervalMs": 5000
   },
-  "lastUpdated": "2025-12-17T13:10:57.847Z"
+  "lastUpdated": "2025-12-19T13:18:43.280Z"
 }

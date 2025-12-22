@@ -237,6 +237,13 @@ export default function ERDashboard() {
           </div>
           <div className="flex items-center gap-4">
             <Link
+              href="/kanban"
+              className="px-4 py-2 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 transition flex items-center gap-2 text-sm font-medium"
+            >
+              <Activity className="w-4 h-4" />
+              Vista Kanban
+            </Link>
+            <Link
               href="/simulation"
               className="px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition flex items-center gap-2 text-sm font-medium"
             >
